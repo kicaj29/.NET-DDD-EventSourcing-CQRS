@@ -27,3 +27,5 @@ YES.
 ---
 Aggregate should not have references to other agregates but we can inject to aggregate some domain service to
 execute some operations.
+
+Events should be defined in domain because domain triggers these events.
