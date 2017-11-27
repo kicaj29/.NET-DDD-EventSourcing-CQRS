@@ -16,9 +16,14 @@ namespace Cafe.Domain
         IHandleCommand<PlaceOrder>,
         IHandleCommand<MarkDrinksToServe>,
         IHandleCommand<CloseTab>,
+        IHandleCommand<MarkFoodPrepared>,
+        IHandleCommand<MarkFoodServed>,
         IApplyEvent<TabOpened>,
         IApplyEvent<DrinksOrdered>,
-        IApplyEvent<DrinksServed>
+        IApplyEvent<DrinksServed>,
+        IApplyEvent<FoodOrdered>,
+        IApplyEvent<FoodPrepared>,
+        IApplyEvent<FoodServed>
     {
         private decimal servedItemsValue = 0M;
         private bool open = false;
@@ -87,6 +92,16 @@ namespace Cafe.Domain
         {
             return AreAllInList(want: menuNumbers, have: outstandingDrinks);
         }
+
+        private bool IsFoodOutstanding(List<int> menuNumbers)
+        {
+            return AreAllInList(want: menuNumbers, have: outstandingFood);
+        }
+
+        private bool IsFoodPrepared(List<int> menuNumbers)
+        {
+            return AreAllInList(want: menuNumbers, have: preparedFood);
+        }
         /// <summary>
         /// The Apply should update the aggregate's state based on the event and its data.
         /// For example if we want materialize the aggregate in an application or in tests to satisfy the GIVEN part.
@@ -121,6 +136,55 @@ namespace Cafe.Domain
                 OrderValue = this.servedItemsValue,
                 TipValue = c.AmountPaid - this.servedItemsValue
             };
+        }
+
+        public IEnumerable<dynamic> Handle(MarkFoodPrepared c)
+        {
+            if (!this.IsFoodOutstanding(c.MenuNumbers))
+                throw new FoodNotOutstanding();
+
+            yield return new FoodPrepared
+            {
+                Id = c.Id,
+                MenuNumbers = c.MenuNumbers
+            };
+        }
+
+        public IEnumerable<dynamic> Handle(MarkFoodServed c)
+        {
+            if (!IsFoodPrepared(c.MenuNumbers))
+                throw new FoodNotPrepared();
+
+            yield return new FoodServed
+            {
+                Id = c.Id,
+                MenuNumbers = c.MenuNumbers
+            };
+        }
+
+        public void Apply(FoodOrdered e)
+        {
+            this.outstandingFood.AddRange(e.Items);
+        }
+
+        public void Apply(FoodPrepared e)
+        {
+            foreach (var num in e.MenuNumbers)
+            {
+                var item = outstandingFood.First(f => f.MenuNumber == num);
+                outstandingFood.Remove(item);
+                preparedFood.Add(item);
+            }
+        }
+
+        public void Apply(FoodServed e)
+        {
+            foreach (var num in e.MenuNumbers)
+            {
+                var item = preparedFood.First(f => f.MenuNumber == num);
+                preparedFood.Remove(item);
+                servedItemsValue += item.Price;
+            }
         }
     }
 }

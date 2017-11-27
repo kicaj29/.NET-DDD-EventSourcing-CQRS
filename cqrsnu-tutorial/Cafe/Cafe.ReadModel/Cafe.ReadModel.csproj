@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{000C0F55-0B45-4ABC-B15F-C24764C821DB}</ProjectGuid>
+    <ProjectGuid>{5B57FD02-1A5A-4258-AB7E-4C7D93BAB27A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cafe.Domain</RootNamespace>
-    <AssemblyName>Cafe.Domain</AssemblyName>
+    <RootNamespace>Cafe.ReadModel</RootNamespace>
+    <AssemblyName>Cafe.ReadModel</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,34 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregate.cs" />
-    <Compile Include="Commands\CloseTab.cs" />
-    <Compile Include="Commands\MarkDrinksToServe.cs" />
-    <Compile Include="Commands\OpenTab.cs" />
-    <Compile Include="Commands\PlaceOrder.cs" />
-    <Compile Include="Events\DrinksOrdered.cs" />
-    <Compile Include="Events\DrinksServed.cs" />
-    <Compile Include="Events\FoodOrdered.cs" />
-    <Compile Include="Events\FoodPrepared.cs" />
-    <Compile Include="Events\FoodServed.cs" />
-    <Compile Include="Events\MarkFoodPrepared.cs" />
-    <Compile Include="Events\MarkFoodServed.cs" />
-    <Compile Include="Events\OrderedItem.cs" />
-    <Compile Include="Events\TabClosed.cs" />
-    <Compile Include="Events\TabOpened.cs" />
-    <Compile Include="Exceptions\DrinksNotOutstanding.cs" />
-    <Compile Include="Exceptions\FoodNotOutstanding.cs" />
-    <Compile Include="Exceptions\FoodNotPrepared.cs" />
-    <Compile Include="Exceptions\MustPayEnough.cs" />
-    <Compile Include="Exceptions\TabNotOpen.cs" />
-    <Compile Include="IApplyEvent.cs" />
-    <Compile Include="IEventStore.cs" />
-    <Compile Include="IHandleCommand.cs" />
-    <Compile Include="InMemoryEventStore.cs" />
-    <Compile Include="ISubscribeTo.cs" />
-    <Compile Include="MessageDispatcher.cs" />
+    <Compile Include="ChefTodoList.cs" />
+    <Compile Include="IChefTodoListQueries.cs" />
+    <Compile Include="IOpenTabQueries.cs" />
+    <Compile Include="OpenTabs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TabAggregate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cafe.Domain\Cafe.Domain.csproj">
+      <Project>{000c0f55-0b45-4abc-b15f-c24764c821db}</Project>
+      <Name>Cafe.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
