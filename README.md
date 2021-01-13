@@ -1,6 +1,9 @@
 - [cqrsnu-tutorial](#cqrsnu-tutorial)
+- [When DDD is not a good idea](#when-ddd-is-not-a-good-idea)
 - [DDD building blocks](#ddd-building-blocks)
   - [DDD Mind Map](#ddd-mind-map)
+  - [Bounded context vs subdomain](#bounded-context-vs-subdomain)
+  - [Anti-corruption layer](#anti-corruption-layer)
   - [Aggregate](#aggregate)
     - [Aggregate vs Aggregate Root](#aggregate-vs-aggregate-root)
   - [Value Object](#value-object)
@@ -37,11 +40,57 @@ execute some operations.
 
 Events should be defined in domain because domain triggers these events.
 
+# When DDD is not a good idea
+
+* when we have simple CRUD operation or data driven design
+* when we are lacking domain expert ?
+* when domain is simple
+
 # DDD building blocks
 
 ## DDD Mind Map
 
 ![mind-map](./images/ddd-concept-map.png)
+
+## Bounded context vs subdomain
+
+A **subdomain** is a part of your business. There are core domains, supporting domains and generic domains. Core domains are where the money is, supporting domains support your core business, and generic domains are the ones you need, but don't care a lot about, so you would probably buy them of the shelf. For an insurance company, the core domain is insurance, a supporting domain could be client portfolio, and a generic domain could be something like timesheets.
+
+When both subdomains and the core domain are defined, it’s time to implement the code. **Bounded context** defines tangible boundaries of **applicability of some subdomain** (so in practice it is created source code?).
+It seems natural that the code belonging to some bounded context would implement a single subdomain, the one it was intended for, having no clue about the others. But this alignment is not always a case, of course. The most frequent reason is some legacy system that was built without a DDD approach in mind. Bounded contexts in such systems can expose several subdomains.  
+
+Example:
+One subdomain represents a transaction processing logic, and the other, transaction reconciliation logic. So the following code represents these two sub-domains within a single bounded context:
+
+```
+class Gateway
+{
+    public function go()
+
+    {
+        $this-&gt;processPayment();
+        $this-&gt;processReconciliation();
+    }
+
+    private function processPayment()
+    {
+
+        // do some stuff here
+    }
+
+
+    private function processReconciliation()
+    {
+        // do some stuff here
+
+    }
+}
+```
+
+
+
+## Anti-corruption layer
+Used to communicate between different subdomains.
 
 ## Aggregate
 
@@ -263,4 +312,7 @@ public class Customer
 https://medium.com/ingeniouslysimple/aggregates-in-domain-driven-design-5aab3ef9901d   
 https://deviq.com/domain-driven-design/value-object   
 https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects   
-https://stackoverflow.com/questions/1958621/whats-an-aggregate-root#:~:text=An%20AGGREGATE%20is%20a%20cluster,ENTITY%20contained%20in%20the%20AGGREGATE.
+https://stackoverflow.com/questions/1958621/whats-an-aggregate-root#:~:text=An%20AGGREGATE%20is%20a%20cluster,ENTITY%20contained%20in%20the%20AGGREGATE   
+https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/exercise-files   
+https://medium.com/nick-tune-tech-strategy-blog/domains-subdomain-problem-solution-space-in-ddd-clearly-defined-e0b49c7b586c   
+https://dzone.com/articles/ddd-strategic-patterns-how-to-define-bounded-conte   
