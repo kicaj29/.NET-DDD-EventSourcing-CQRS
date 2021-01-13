@@ -1,4 +1,5 @@
 - [cqrsnu-tutorial](#cqrsnu-tutorial)
+- [ddd example 1](#ddd-example-1)
 - [When DDD is not a good idea](#when-ddd-is-not-a-good-idea)
 - [DDD building blocks](#ddd-building-blocks)
   - [DDD Mind Map](#ddd-mind-map)
@@ -39,6 +40,10 @@ Aggregate should not have references to other agregates but we can inject to agg
 execute some operations.
 
 Events should be defined in domain because domain triggers these events.
+
+# ddd example 1
+
+[ddd example 1](./ddd-example2/readme.md)
 
 # When DDD is not a good idea
 
