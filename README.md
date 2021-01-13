@@ -1,3 +1,13 @@
+- [cqrsnu-tutorial](#cqrsnu-tutorial)
+- [DDD building blocks](#ddd-building-blocks)
+  - [DDD Mind Map](#ddd-mind-map)
+  - [Aggregate](#aggregate)
+    - [Aggregate vs Aggregate Root](#aggregate-vs-aggregate-root)
+  - [Value Object](#value-object)
+- [Entities](#entities)
+- [resources](#resources)
+
+
 # cqrsnu-tutorial
 Tutorial based on http://cqrs.nu/tutorial/cs/01-design
 https://github.com/edumentab/cqrs-starter-kit   
