@@ -4,7 +4,7 @@
   - [Aggregate](#aggregate)
     - [Aggregate vs Aggregate Root](#aggregate-vs-aggregate-root)
   - [Value Object](#value-object)
-- [Entities](#entities)
+  - [Entities](#entities)
 - [resources](#resources)
 
 
@@ -223,7 +223,7 @@ public class Address : ValueObject
 }
 ```
 
-# Entities
+## Entities
 
 If two instances of the same object have different attribute values, but same identity value, are they the same entity?
 If the answer is “yes”, and I care about an identity, then the class is indeed an entity.
