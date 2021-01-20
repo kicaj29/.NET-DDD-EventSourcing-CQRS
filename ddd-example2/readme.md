@@ -27,5 +27,5 @@ In this example are 3 bounded contexts: AppointmentScheduling, ClientPatientMana
   * any type of regular office visit
 
 # resources
-
+.
 https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/table-of-contents
