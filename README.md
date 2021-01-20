@@ -1,5 +1,5 @@
 - [cqrsnu-tutorial](#cqrsnu-tutorial)
-- [ddd example 1](#ddd-example-1)
+- [ddd example 2](#ddd-example-2)
 - [When DDD is not a good idea](#when-ddd-is-not-a-good-idea)
 - [DDD building blocks](#ddd-building-blocks)
   - [DDD Mind Map](#ddd-mind-map)
@@ -41,9 +41,10 @@ execute some operations.
 
 Events should be defined in domain because domain triggers these events.
 
-# ddd example 1
+# ddd example 2
 
-[ddd example 1](./ddd-example2/readme.md)
+[ddd example 2](./ddd-example2)   
+[readme](./ddd-example2/readme.md)
 
 # When DDD is not a good idea
 
@@ -92,7 +93,11 @@ class Gateway
 }
 ```
 
+> "Sub-domain is a problem space concept and bounded context is a solution space concept".
 
+> "Sub-domain is a way we chose to break up a business and bounded context describes how the software and the software development has been broken down."
+
+> "Sub-domains are separate applications of features your software must support or interact with. Bounded context is a specific responsibility, with explicit boundaries that separate it from other parts of the system."
 
 ## Anti-corruption layer
 Used to communicate between different subdomains.
