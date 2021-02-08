@@ -17,6 +17,8 @@
   - [Relationships](#relationships)
   - [Domain Services](#domain-services)
   - [Side Effects](#side-effects)
+  - [Repositories](#repositories)
+    - [Repositories vs Factories](#repositories-vs-factories)
 - [resources](#resources)
 
 
@@ -231,6 +233,8 @@ In case of DDD it is easier to use Guid as ID because then the whole logic relat
 
 ### Aggregate Invariants
 
+Invariant is a condition that should always be true for the system to be in consistent state.
+
 Aggregate root should enforce invariants.
 
 Examples:
@@ -380,6 +384,30 @@ Good domain services:
 
 ## Side Effects
 Changes in the state of the application or interaction with the outside world (e.g. infrastructure).
+
+## Repositories
+
+* think of it as an in-memory collection (repository client does not know anything about accessing DB)
+* implement a known common access interface
+* methods for add & remove
+* methods that predefine criteria for object selection
+* repos for aggregate roots!
+
+Benefits:
+* provides common abstraction for persistence
+* promotes separation of concerns
+* communicates design decisions
+* enables testability
+* improve maintainability
+
+![generic-repos](images/003-ddd-generic-repos.png)
+
+### Repositories vs Factories
+
+* factories only create new objects, repositories do more: find, update, delete. A repository can use a factory to create its objects.
+* persistence
+  * factories: no, no, no
+  * repositories: yes, yes, yes
 
 # resources
 
