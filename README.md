@@ -10,7 +10,7 @@
   - [Aggregate](#aggregate)
     - [Aggregate vs Aggregate Root](#aggregate-vs-aggregate-root)
     - [Relationships between aggregates](#relationships-between-aggregates)
-      - [Guid vs Id](#guid-vs-id)
+    - [Guid vs Id](#guid-vs-id)
     - [Aggregate Invariants](#aggregate-invariants)
   - [Value Object](#value-object)
   - [Entities](#entities)
@@ -224,7 +224,7 @@ Aggregates can references by pointing aggregate root ID. Because of specifics ho
 
 ![relationships-aggregates-wrong](images/002-ddd-aggregates-relationships.png)
 
-#### Guid vs Id
+### Guid vs Id
 
 In case of CRUD usually it is easy to use int as ID - then id generation is controlled by DB.
 In case of DDD it is easier to use Guid as ID because then the whole logic related with the Aggregate Root can done in C# without touching DB.
