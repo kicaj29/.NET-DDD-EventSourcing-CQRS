@@ -1,14 +1,22 @@
 - [cqrsnu-tutorial](#cqrsnu-tutorial)
 - [ddd example 2](#ddd-example-2)
 - [When DDD is not a good idea](#when-ddd-is-not-a-good-idea)
+- [Anemic Domain Model](#anemic-domain-model)
+- [Rich Domain Model](#rich-domain-model)
 - [DDD building blocks](#ddd-building-blocks)
   - [DDD Mind Map](#ddd-mind-map)
   - [Bounded context vs subdomain](#bounded-context-vs-subdomain)
   - [Anti-corruption layer](#anti-corruption-layer)
   - [Aggregate](#aggregate)
     - [Aggregate vs Aggregate Root](#aggregate-vs-aggregate-root)
+    - [Relationships between aggregates](#relationships-between-aggregates)
+      - [Guid vs Id](#guid-vs-id)
+    - [Aggregate Invariants](#aggregate-invariants)
   - [Value Object](#value-object)
   - [Entities](#entities)
+  - [Relationships](#relationships)
+  - [Domain Services](#domain-services)
+  - [Side Effects](#side-effects)
 - [resources](#resources)
 
 
@@ -51,6 +59,14 @@ Events should be defined in domain because domain triggers these events.
 * when we have simple CRUD operation or data driven design
 * when we are lacking domain expert ?
 * when domain is simple
+
+# Anemic Domain Model
+
+Model with classes focused on state management. Good for CRUD.
+
+# Rich Domain Model
+
+Model with logic focused on behavior, not just state. Preferred for DDD.
 
 # DDD building blocks
 
@@ -107,6 +123,10 @@ Used to communicate between different subdomains.
 An aggregate is an encapsulation of entities and value objects (domain objects) which conceptually belong together. It also contains a set of operations which those domain objects can be operated on. 
 
 > "Aggregates are the basic element of transfer of data storage — you request to load or save whole aggregates. Transactions should not cross aggregate boundaries."
+
+> "An aggregate is a cluster of associated objects that we treat as a unit for the purpose of data changes".
+
+Aggregate must be: atomic, consistent, isolated and durable.
 
 Sample aggregate
 ```
@@ -196,6 +216,28 @@ An example is a model containing a Customer entity and an Address entity. We wou
 
 > "An aggregate will have one of its component objects be the aggregate root. Any references from outside the aggregate should only go to the aggregate root. The root can thus ensure the integrity of the aggregate as a whole."
 
+### Relationships between aggregates
+
+Aggregates can references by pointing aggregate root ID. Because of specifics how ORMs work it is better to use ID instead of the whole class (use ```Guid CustomerId``` instead of ```Customer Customer```).
+
+![relationships-aggregates](images/001-ddd-aggregates-relationships.png)
+
+![relationships-aggregates-wrong](images/002-ddd-aggregates-relationships.png)
+
+#### Guid vs Id
+
+In case of CRUD usually it is easy to use int as ID - then id generation is controlled by DB.
+In case of DDD it is easier to use Guid as ID because then the whole logic related with the Aggregate Root can done in C# without touching DB.
+
+### Aggregate Invariants
+
+Aggregate root should enforce invariants.
+
+Examples:
+* total items on purchase order do not exceed limit
+* two appointments do not overlap one another
+* end date follows begin date
+
 ## Value Object
 
 A Value Object is an immutable type that is distinguishable only by the state of its properties. That is, unlike an Entity, which has a unique identifier and remains distinct even if its properties are otherwise identical, two Value Objects with the exact same properties can be considered equal.
@@ -206,6 +248,7 @@ A value object:
 
 * does not have an identity
 * must be immutable
+* no side effects
 
 Sample value object:
 ```
@@ -282,6 +325,8 @@ public class Address : ValueObject
 }
 ```
 
+Examples of value objects: date range, money (currency and value together), address (zip code, street, city).
+
 ## Entities
 
 If two instances of the same object have different attribute values, but same identity value, are they the same entity?
@@ -316,6 +361,25 @@ public class Customer
     }
 }
 ```
+
+## Relationships
+
+DDD guides that it is better to use unidirectional relations because they are easier to maintain.   
+Bidirectional relationships are not forbidden but we should justify their existence.
+
+## Domain Services
+
+Important operations that do not belong to a particular Entity or Value Objects should belong to a domain service.
+
+Good domain services:
+
+* not a natural part of an Entity or Value Object
+* have an interface defined in terms of other domain model elements
+* are stateless (but may have side effects)
+* live in the core of the application
+
+## Side Effects
+Changes in the state of the application or interaction with the outside world (e.g. infrastructure).
 
 # resources
 
