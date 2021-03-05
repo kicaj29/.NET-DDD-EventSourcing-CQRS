@@ -28,4 +28,5 @@ In this example are 3 bounded contexts: AppointmentScheduling, ClientPatientMana
 
 # resources
 .
-https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/table-of-contents
+https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/table-of-contents   
+https://structuremap.github.io/registration/auto-registration-and-conventions/

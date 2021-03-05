@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="structuremap" Version="4.7.1" />
+    <ProjectReference Include="..\FrontDesk.SharedKernel\FrontDesk.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>
