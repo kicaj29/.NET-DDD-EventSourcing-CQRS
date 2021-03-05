@@ -1,5 +1,5 @@
 - [cqrsnu-tutorial](#cqrsnu-tutorial)
-- [ddd example 2](#ddd-example-2)
+- [vet-clinic](#vet-clinic)
 - [When DDD is not a good idea](#when-ddd-is-not-a-good-idea)
 - [Anemic Domain Model](#anemic-domain-model)
 - [Rich Domain Model](#rich-domain-model)
@@ -51,10 +51,10 @@ execute some operations.
 
 Events should be defined in domain because domain triggers these events.
 
-# ddd example 2
+# vet-clinic
 
-[ddd example 2](./ddd-example2)   
-[readme](./ddd-example2/readme.md)
+[vet-clinic](./vet-clinic)   
+[readme](./vet-clinic/readme.md)
 
 # When DDD is not a good idea
 
