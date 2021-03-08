@@ -29,4 +29,5 @@ In this example are 3 bounded contexts: AppointmentScheduling, ClientPatientMana
 # resources
 .
 https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/table-of-contents   
-https://structuremap.github.io/registration/auto-registration-and-conventions/
+https://structuremap.github.io/registration/auto-registration-and-conventions/   
+https://stackoverflow.com/questions/66528541/structuremap-does-not-see-types-in-asp-net-core-net5   

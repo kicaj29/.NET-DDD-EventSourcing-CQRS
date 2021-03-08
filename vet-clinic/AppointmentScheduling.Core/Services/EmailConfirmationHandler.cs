@@ -1,4 +1,5 @@
 ﻿using AppointmentScheduling.Core.Model.ApplicationEvents;
+using FrontDesk.SharedKernel;
 using FrontDesk.SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;

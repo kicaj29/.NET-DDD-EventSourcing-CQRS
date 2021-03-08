@@ -18,7 +18,6 @@ namespace FrontDesk.SharedKernel
 
         static DomainEvents()
         {
-            //Container = StructureMap.ObjectFactory.Container;
             Container = StructureMap.Container.For<BasicScanning>();
         }
 

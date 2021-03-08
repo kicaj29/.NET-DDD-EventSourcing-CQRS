@@ -5,4 +5,8 @@
     <RootNamespace>vet_clinic</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AppointmentScheduling.Core\AppointmentScheduling.Core.csproj" />
+  </ItemGroup>
+
 </Project>

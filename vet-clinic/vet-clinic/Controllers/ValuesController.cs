@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AppointmentScheduling.Core.Model.Events;
+using AppointmentScheduling.Core.Services;
+using FrontDesk.SharedKernel;
+using FrontDesk.SharedKernel.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +20,19 @@ namespace vet_clinic.Controllers
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<string> Get()
-        {
+        {                        
+            /*var appointmentConfirmedEvent = new AppointmentConfirmedEvent(null);
+            DomainEvents.Raise(appointmentConfirmedEvent);
+            Debug.WriteLine(DomainEvents.Container.WhatDidIScan());
+            Debug.WriteLine(DomainEvents.Container.WhatDoIHave());
+
+            var handlers = DomainEvents.Container.GetAllInstances<IHandle<AppointmentConfirmedEvent>>();
+            var handlers1 = DomainEvents.Container.GetAllInstances<EmailConfirmationHandler>();
+            var handlers2 = DomainEvents.Container.GetAllInstances(typeof(IHandle<AppointmentConfirmedEvent>));
+            var handlers3 = DomainEvents.Container.GetAllInstances(typeof(EmailConfirmationHandler));
+            var handlers4 = DomainEvents.Container.GetAllInstances(typeof(IHandle<>));
+            */
+
             return new string[] { "value1", "value2" };
         }
 
