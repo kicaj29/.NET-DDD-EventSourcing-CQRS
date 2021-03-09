@@ -1,4 +1,6 @@
-﻿using AppointmentScheduling.Core.Model.ApplicationEvents;
+﻿using AppointmentScheduling.Core.Interfaces;
+using AppointmentScheduling.Core.Model;
+using AppointmentScheduling.Core.Model.Events;
 using FrontDesk.SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,11 +10,29 @@ using System.Threading.Tasks;
 
 namespace AppointmentScheduling.Core.Services
 {
+    /// <summary>
+    /// Post appointmentscheduledevent to message bus to allow confirmation emails to be sent
+    /// </summary>
     public class RelayAppointmentScheduledService: IHandle<AppointmentScheduledEvent>
     {
+        private readonly IAppointmentDTORepository _apptRepository;
+
+        private readonly IMessagePublisher _messagePublisher;
+
+        public RelayAppointmentScheduledService(IAppointmentDTORepository apptRepository, IMessagePublisher messagePublisher)
+        {
+            this._apptRepository = apptRepository;
+            this._messagePublisher = messagePublisher;
+        }
+
         public void Handle(AppointmentScheduledEvent appointmentScheduledEvent)
         {
-            // TBD
+            AppointmentDTO appointment = _apptRepository.GetFromAppointment(appointmentScheduledEvent.AppointmentScheduled);
+
+            // we are translating from a domain event to an application event here
+            var newEvent = new AppointmentScheduling.Core.Model.ApplicationEvents.AppointmentScheduledEvent(appointment);
+
+            _messagePublisher.Publish(newEvent);
         }
     }
 }
