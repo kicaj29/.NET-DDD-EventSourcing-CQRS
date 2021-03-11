@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vet-clinic", "vet-clinic\vet-clinic.csproj", "{5FBCEB93-8EFB-4820-82D2-164E5D0BF864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDesk.SharedKernel", "FrontDesk.SharedKernel\FrontDesk.SharedKernel.csproj", "{BA8528DA-C36B-4E3B-9AEE-F175A0729CB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDesk.SharedKernel", "FrontDesk.SharedKernel\FrontDesk.SharedKernel.csproj", "{BA8528DA-C36B-4E3B-9AEE-F175A0729CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDesk.SharedKernel.UnitTests", "FrontDesk.SharedKernel.UnitTests\FrontDesk.SharedKernel.UnitTests.csproj", "{CDBA6BED-D18B-4949-9702-BED0682855D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDesk.SharedKernel.UnitTests", "FrontDesk.SharedKernel.UnitTests\FrontDesk.SharedKernel.UnitTests.csproj", "{CDBA6BED-D18B-4949-9702-BED0682855D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppointmentScheduling", "AppointmentScheduling", "{00DF746A-BA53-4D40-9F62-2D022A4D409D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentScheduling.Core", "AppointmentScheduling.Core\AppointmentScheduling.Core.csproj", "{5A45AA19-3412-4A01-8949-91C78AF98FFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentScheduling.Core", "AppointmentScheduling.Core\AppointmentScheduling.Core.csproj", "{5A45AA19-3412-4A01-8949-91C78AF98FFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentScheduling.Core.UnitTests", "AppointmentScheduling.Core.UnitTests\AppointmentScheduling.Core.UnitTests.csproj", "{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,12 +37,17 @@ Global
 		{5A45AA19-3412-4A01-8949-91C78AF98FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A45AA19-3412-4A01-8949-91C78AF98FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A45AA19-3412-4A01-8949-91C78AF98FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A45AA19-3412-4A01-8949-91C78AF98FFC} = {00DF746A-BA53-4D40-9F62-2D022A4D409D}
+		{90F58CE5-B1B7-445A-9B44-27BCBD06FE1C} = {00DF746A-BA53-4D40-9F62-2D022A4D409D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE5AA281-EFCC-4FC4-9525-890736417357}
