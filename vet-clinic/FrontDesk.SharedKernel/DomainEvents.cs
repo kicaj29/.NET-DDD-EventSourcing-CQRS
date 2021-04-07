@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace FrontDesk.SharedKernel
 {
     /// <summary>
     /// http://msdn.microsoft.com/en-gb/magazine/ee236415.aspx#id0400046
+    /// This name is misleading because it takes care also application events!
     /// </summary>
     public static class DomainEvents
     {
@@ -38,6 +40,9 @@ namespace FrontDesk.SharedKernel
 
         public static void Raise<T>(T args) where T : IDomainEvent
         {
+            // Debug.WriteLine(Container.WhatDidIScan());
+            // Debug.WriteLine(Container.WhatDoIHave());
+
             foreach (var handler in Container.GetAllInstances<IHandle<T>>())
             {
                 handler.Handle(args);

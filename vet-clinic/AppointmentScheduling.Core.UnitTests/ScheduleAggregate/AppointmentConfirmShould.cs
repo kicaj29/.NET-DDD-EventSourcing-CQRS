@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AppointmentScheduling.Core.Model.Events;
 
-namespace AppointmentScheduling.Core.UnitTests
+namespace AppointmentScheduling.Core.UnitTests.Model.Events
 {
     [TestFixture]
     public class AppointmentConfirmShould

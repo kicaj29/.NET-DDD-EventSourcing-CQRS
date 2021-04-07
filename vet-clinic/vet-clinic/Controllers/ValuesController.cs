@@ -1,4 +1,4 @@
-﻿using AppointmentScheduling.Core.Model.Events;
+﻿using AppointmentScheduling.Core.Model.ApplicationEvents;
 using AppointmentScheduling.Core.Services;
 using FrontDesk.SharedKernel;
 using FrontDesk.SharedKernel.Interfaces;
@@ -21,8 +21,12 @@ namespace vet_clinic.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {                        
-            /*var appointmentConfirmedEvent = new AppointmentConfirmedEvent(null);
+            var appointmentConfirmedEvent = new AppointmentConfirmedEvent();
             DomainEvents.Raise(appointmentConfirmedEvent);
+
+            var appointmentScheduledEvent = new AppointmentScheduledEvent(null);
+            DomainEvents.Raise(appointmentScheduledEvent);
+
             Debug.WriteLine(DomainEvents.Container.WhatDidIScan());
             Debug.WriteLine(DomainEvents.Container.WhatDoIHave());
 
@@ -30,8 +34,8 @@ namespace vet_clinic.Controllers
             var handlers1 = DomainEvents.Container.GetAllInstances<EmailConfirmationHandler>();
             var handlers2 = DomainEvents.Container.GetAllInstances(typeof(IHandle<AppointmentConfirmedEvent>));
             var handlers3 = DomainEvents.Container.GetAllInstances(typeof(EmailConfirmationHandler));
-            var handlers4 = DomainEvents.Container.GetAllInstances(typeof(IHandle<>));
-            */
+            //var handlers4 = DomainEvents.Container.GetAllInstances(typeof(IHandle<>));
+
 
             return new string[] { "value1", "value2" };
         }

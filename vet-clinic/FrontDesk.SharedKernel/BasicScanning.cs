@@ -16,15 +16,8 @@ namespace FrontDesk.SharedKernel
         {
             Scan(scan =>
             {
-                //_.AssemblyContainingType(typeof(IHandle<>));
-                //scan.Assembly("AppointmentScheduling.Core");
-                //scan.AssembliesFromApplicationBaseDirectory();
-                Debug.WriteLine("Current dir:" + AppDomain.CurrentDomain.BaseDirectory);
-
-                scan.Assembly(Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + ".\\AppointmentScheduling.Core.dll"));
-
-                scan.AddAllTypesOf(typeof(IHandle<>)).NameBy( x => x.FullName);
-                scan.WithDefaultConventions();
+                scan.AssembliesFromApplicationBaseDirectory();
+                scan.ConnectImplementationsToTypesClosing(typeof(IHandle<>));
             });
             
         }

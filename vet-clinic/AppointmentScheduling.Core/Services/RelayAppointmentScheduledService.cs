@@ -19,10 +19,10 @@ namespace AppointmentScheduling.Core.Services
 
         private readonly IMessagePublisher _messagePublisher;
 
-        public RelayAppointmentScheduledService(IAppointmentDTORepository apptRepository, IMessagePublisher messagePublisher)
+        public RelayAppointmentScheduledService(/*IAppointmentDTORepository apptRepository, IMessagePublisher messagePublisher*/)
         {
-            this._apptRepository = apptRepository;
-            this._messagePublisher = messagePublisher;
+            //this._apptRepository = apptRepository;
+            //this._messagePublisher = messagePublisher;
         }
 
         public void Handle(AppointmentScheduledEvent appointmentScheduledEvent)

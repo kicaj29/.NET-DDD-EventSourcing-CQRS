@@ -16,10 +16,10 @@ namespace AppointmentScheduling.Core.Services
 
         private readonly IApplicationSettings _settings;
 
-        public EmailConfirmationHandler(IScheduleRepository scheduleRepository, IApplicationSettings settings)
+        public EmailConfirmationHandler(/*IScheduleRepository scheduleRepository, IApplicationSettings settings*/)
         {
-            this._scheduleRepository = scheduleRepository;
-            this._settings = settings;
+            //this._scheduleRepository = scheduleRepository;
+            //this._settings = settings;
         }
 
         public void Handle(AppointmentConfirmedEvent appointmentConfirmedEvent)

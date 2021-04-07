@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppointmentScheduling.Core.UnitTests
+namespace AppointmentScheduling.Core.UnitTests.Model.Events
 {
     [TestFixture]
     public class AppointmentCreateShould
